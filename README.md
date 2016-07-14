@@ -11,7 +11,6 @@ The service is configured with the following environment variables :
     SERVICE_PORT=8080
     AWS_REGION="eu-central-1"
     AWS_INSTANCE_TYPE="t2.micro"
-    AWS_VPC="vpc-xxxxxxxx"
     AWS_IMAGE_ID="ami-87564feb"
     AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
     AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
