@@ -1,0 +1,88 @@
+swagger: "2.0"
+info:
+  version: "0.0.1"
+  title: SSH AWS Instance Deployment Trigger
+host: localhost:8080
+basePath: /
+schemes:
+  - http
+  - https
+consumes:
+  - application/json
+produces:
+  - application/json
+paths:
+  /ssh:
+    x-swagger-router-controller: ssh
+    put:
+      description: Deploys a SSH instance
+      operationId: deploy
+      parameters:
+        - name: instruction
+          in: body
+          description: The instructions to be executed
+          required: true
+          schema: 
+            $ref: "#/definitions/Instruction"
+      responses:
+        "201":
+          description: Accepted
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Error"
+    delete:
+      description: Destroys a ssh instance
+      operationId: destroy
+      parameters:
+        - name: instance
+          in: body
+          description: The instructions to be executed
+          required: true
+          schema: 
+            $ref: "#/definitions/Instance"
+      responses:
+        "201":
+          description: Accepted
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Error"
+  /callback:
+    x-swagger-router-controller: callback
+    post:
+      description: Waits for deplyoment notifications. For testing purposes it runs on the same host
+      operationId: listen
+      parameters:
+        - name: instance
+          in: body
+          description: The instance information
+          required: true
+          schema: 
+            $ref: "#/definitions/Instance"
+      responses:
+        "200":
+          description: OK
+        default:
+          description: Error
+          schema:
+            $ref: "#/definitions/Error"
+definitions:
+  Instruction:
+    properties:
+      username:
+        type: string
+      password:
+        type: string
+      callback:
+        type: string
+  Instance:
+    properties:
+      id:
+        type: string
+  Error:
+    required:
+      - message
+    properties:
+      message:
+        type: string
