@@ -16,6 +16,8 @@ The service is configured with the following environment variables :
     AWS_ACCESS_KEY_ID="XXXXXXXXXXXXXXXXXXXX"
     AWS_SECRET_ACCESS_KEY="XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX"
 
+In 'debug' mode the task agains AWS are executed as dry-run.
+
 ## Getting started
 
 Do
